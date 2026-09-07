@@ -37,11 +37,11 @@ python src/cli.py reference.txt current.txt
 
 | Language | Tests | Run |
 |----------|:-----:|-----|
-| Python | 7 | `cd python && pytest -q` |
+| Python | 13 | `cd python && pytest -q` |
 | C# (.NET 10) | 6 | `cd csharp && dotnet test` |
 | Java (17+) | 6 | `cd java && mvn test` |
 
-The binning + PSI/KL math is pure numeric logic (no numpy/ML.NET/DL4J), so all three agree.
+The binning + PSI/KL math is pure numeric logic (no numpy/ML.NET/DL4J), so all three agree on the 6-test core detector. Python's `pytest -q` also runs a **6-test stress suite** (`test_stress.py`) on top of the 7 detector tests, for 13 in total.
 
 ## Known limitations / next
 
