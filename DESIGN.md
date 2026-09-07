@@ -23,7 +23,7 @@ distribution moved, then classifies the severity so you can alert or gate. Goals
 
 ![drift detection flow](docs/diagrams/drift-detection-flow.png)
 
-*(Source: [`docs/diagrams/drift-detection-flow.excalidraw`](docs/diagrams/drift-detection-flow.excalidraw) - editable in [excalidraw](https://aka.ms/excalidraw).)*
+*(The same diagram renders inline as Mermaid in the [README](README.md#how-it-works); this PNG is a static export.)*
 
 ## Key design decisions
 
