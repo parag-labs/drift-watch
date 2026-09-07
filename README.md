@@ -56,4 +56,18 @@ The binning + PSI/KL math is pure numeric logic (no numpy/ML.NET/DL4J), so all t
 - **[BENCHMARKS.md](BENCHMARKS.md)** - detection throughput vs sample size and cost vs
   bin count, with graphs. Reproduce with `python bench/benchmark.py`.
 
+## Layout
+
+```
+drift-watch/
+├── python/         reference implementation (PSI + KL) + pytest suite
+├── csharp/         .NET 10 port - Drift.cs + tests
+├── java/           JDK 17+ port (Maven)
+├── bench/          benchmark.py - drift-score cost vs feature count
+├── docs/diagrams/  architecture diagrams
+├── DESIGN.md       why PSI and KL, bucketing choices, weighting by importance
+└── BENCHMARKS.md   reproducible numbers
+```
+
+
 Part of [parag-labs](https://github.com/parag-labs) - small, focused tools for building AI systems you can trust.
