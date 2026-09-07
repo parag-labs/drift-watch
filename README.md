@@ -86,7 +86,6 @@ drift-watch/
 ├── csharp/         .NET 10 port - Drift.cs + tests
 ├── java/           JDK 17+ port (Maven)
 ├── bench/          benchmark.py - drift-score cost vs feature count
-├── docs/diagrams/  architecture diagrams
 ├── DESIGN.md       why PSI and KL, bucketing choices, weighting by importance
 └── BENCHMARKS.md   reproducible numbers
 ```
