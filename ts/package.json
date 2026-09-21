@@ -1,0 +1,14 @@
+{
+  "name": "drift-watch",
+  "version": "0.1.0",
+  "description": "Data-drift detection (PSI + KL-divergence) - TypeScript port.",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

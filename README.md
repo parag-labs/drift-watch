@@ -2,7 +2,7 @@
 
 **Catch model degradation before your users do.**
 
-Models silently rot when production data drifts away from what they were trained on. DriftWatch quantifies that drift with the two industry-standard metrics - **PSI (Population Stability Index)** and **KL-divergence** - and classifies severity so you can alert or block. Same math in **Python, C#, and Java**.
+Models silently rot when production data drifts away from what they were trained on. DriftWatch quantifies that drift with the two industry-standard metrics - **PSI (Population Stability Index)** and **KL-divergence** - and classifies severity so you can alert or block. Same math in **Python, C#, Java, Go, Rust, and TypeScript**.
 
 ## The problem
 
@@ -33,15 +33,18 @@ cd python
 python src/cli.py reference.txt current.txt
 ```
 
-## Three languages, one result
+## Six languages, one result
 
 | Language | Tests | Run |
 |----------|:-----:|-----|
 | Python | 13 | `cd python && pytest -q` |
 | C# (.NET 10) | 6 | `cd csharp && dotnet test` |
 | Java (17+) | 6 | `cd java && mvn test` |
+| Go (1.22+) | 14 | `cd go && go test ./...` |
+| Rust | 14 | `cd rust && cargo test` |
+| TypeScript | 14 | `cd ts && npm install && npm test` |
 
-The binning + PSI/KL math is pure numeric logic (no numpy/ML.NET/DL4J), so all three agree on the 6-test core detector. Python's `pytest -q` also runs a **6-test stress suite** (`test_stress.py`) on top of the 7 detector tests, for 13 in total.
+The binning + PSI/KL math is pure numeric logic (no numpy/ML.NET/DL4J), so all six agree on the core detector. Each language also carries a **stress suite** (`test_stress.py` / `DriftStress*` / `stress_test.go` / `tests/stress.rs` / `stress.test.ts`) that hammers the load-bearing properties in that port: identical distributions stay stable, large shifts read as major, and PSI/KL stay finite and non-negative under fuzzed input. Because each language uses its own PRNG the exact scores differ, so the ports assert *properties* (finite, non-negative, monotonic in the shift, correct severity band) rather than exact values.
 
 ## Known limitations / next
 
@@ -85,6 +88,9 @@ drift-watch/
 ├── python/         reference implementation (PSI + KL) + pytest suite
 ├── csharp/         .NET 10 port - Drift.cs + tests
 ├── java/           JDK 17+ port (Maven)
+├── go/             Go 1.22+ port (go test)
+├── rust/           Rust port (cargo test) - lib + integration tests
+├── ts/             TypeScript port (vitest) - strict tsconfig, ESM
 ├── bench/          benchmark.py - drift-score cost vs feature count
 ├── DESIGN.md       why PSI and KL, bucketing choices, weighting by importance
 └── BENCHMARKS.md   reproducible numbers
