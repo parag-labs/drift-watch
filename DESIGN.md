@@ -23,7 +23,7 @@ distribution moved, then classifies the severity so you can alert or gate. Goals
 
 ![drift detection flow](docs/diagrams/drift-detection-flow.png)
 
-*(The same diagram renders inline as Mermaid in the [README](README.md#how-it-works); this PNG is a static export.)*
+*(Both samples are binned on edges taken from the reference's range, PSI and KL are summed over the resulting proportions, and the PSI value is classified into stable / minor / major - with the epsilon floor and clamping rules that keep the score finite and the boundaries that decide when the CLI exits non-zero.)*
 
 ## Key design decisions
 
