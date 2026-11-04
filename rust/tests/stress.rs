@@ -3,7 +3,7 @@
 //! poison a monitoring dashboard, so every result must be finite, non-negative,
 //! and monotonic in the obvious way.
 
-use drift_watch::{classify, detect_drift, kl_divergence, psi, Severity};
+use drift_watch::{Severity, classify, detect_drift, kl_divergence, psi};
 
 /// A tiny deterministic xorshift64* PRNG so the soak test is reproducible.
 struct Rng(u64);

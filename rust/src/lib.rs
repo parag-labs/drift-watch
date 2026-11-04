@@ -9,4 +9,4 @@
 
 pub mod drift;
 
-pub use drift::{classify, detect_drift, kl_divergence, psi, DriftResult, Severity};
+pub use drift::{DriftResult, Severity, classify, detect_drift, kl_divergence, psi};

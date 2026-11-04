@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Data-drift detection (PSI + KL-divergence) - TypeScript port.",
   "type": "module",
+  "engines": {
+    "node": ">=26"
+  },
   "scripts": {
     "test": "vitest run",
     "lint": "tsc --noEmit"

@@ -1,7 +1,7 @@
 //! DriftWatch detector tests: PSI is zero for identical data, rises with drift,
 //! and classifies by the standard thresholds.
 
-use drift_watch::{classify, detect_drift, kl_divergence, psi, Severity};
+use drift_watch::{Severity, classify, detect_drift, kl_divergence, psi};
 
 /// A tiny deterministic xorshift64* PRNG so the tests are dependency-free.
 struct Rng(u64);

@@ -37,12 +37,12 @@ python src/cli.py reference.txt current.txt
 
 | Language | Tests | Run |
 |----------|:-----:|-----|
-| Python | 13 | `cd python && pytest -q` |
+| Python (3.15) | 13 | `cd python && pytest -q` |
 | C# (.NET 10) | 6 | `cd csharp && dotnet test` |
-| Java (17+) | 6 | `cd java && mvn test` |
-| Go (1.22+) | 14 | `cd go && go test ./...` |
-| Rust | 14 | `cd rust && cargo test` |
-| TypeScript | 14 | `cd ts && npm install && npm test` |
+| Java (25+) | 6 | `cd java && mvn test` |
+| Go (1.27+) | 14 | `cd go && go test ./...` |
+| Rust (1.99+, edition 2024) | 14 | `cd rust && cargo test` |
+| TypeScript (Node 26 LTS) | 14 | `cd ts && npm install && npm test` |
 
 The binning + PSI/KL math is pure numeric logic (no numpy/ML.NET/DL4J), so all six agree on the core detector. Each language also carries a **stress suite** (`test_stress.py` / `DriftStress*` / `stress_test.go` / `tests/stress.rs` / `stress.test.ts`) that hammers the load-bearing properties in that port: identical distributions stay stable, large shifts read as major, and PSI/KL stay finite and non-negative under fuzzed input. Because each language uses its own PRNG the exact scores differ, so the ports assert *properties* (finite, non-negative, monotonic in the shift, correct severity band) rather than exact values.
 
@@ -87,8 +87,8 @@ flowchart LR
 drift-watch/
 ├── python/         reference implementation (PSI + KL) + pytest suite
 ├── csharp/         .NET 10 port - Drift.cs + tests
-├── java/           JDK 17+ port (Maven)
-├── go/             Go 1.22+ port (go test)
+├── java/           JDK 25+ port (Maven)
+├── go/             Go 1.27+ port (go test)
 ├── rust/           Rust port (cargo test) - lib + integration tests
 ├── ts/             TypeScript port (vitest) - strict tsconfig, ESM
 ├── bench/          benchmark.py - drift-score cost vs feature count
